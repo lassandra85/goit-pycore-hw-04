@@ -10,17 +10,20 @@ def total_salary(path):
         total = 0
         count = 0
 
-        for line in text:
+        for line in text.splitlines():
+
             try:
                 name, salary = line.strip().split(",")
                 total += int(salary)
                 count += 1
+
             except ValueError:
+
                 print("Файл містить помилкові дані. Перевірте вміст.")
 
                 return 0, 0
             
-        average = total / count if count > 0 else 0
+        average = total/count if count > 0 else 0
 
         return total, average
     else:
@@ -29,5 +32,6 @@ def total_salary(path):
    
 
 # Приклад використання функції
-total, average = total_salary('path/to/salary_file.txt')
+salary = "salary_file.txt"
+total, average = total_salary(salary)
 print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")
